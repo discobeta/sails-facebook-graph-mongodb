@@ -34,8 +34,9 @@
   </head>
 
   <body>
-  <% if (res.user) { %>
-  Logged in as <%= res.user.email %> | <a href="/logout">logout</a>
+
+  <% if (req.user) { %>
+  Logged in as <%= req.user.email %> | <a href="/logout">logout</a>
   <% } else { %>
   <a href="/login">login</a> | <a href="/register">register</a>
   <% } %>

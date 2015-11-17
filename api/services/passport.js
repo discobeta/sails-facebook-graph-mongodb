@@ -65,7 +65,6 @@ passport.protocols = require('./protocols');
 passport.connect = function (req, query, profile, next) {
   var user = {}
     , provider;
-
   // Get the authentication provider from the query.
   query.provider = req.param('provider');
 
@@ -92,6 +91,8 @@ passport.connect = function (req, query, profile, next) {
   // If neither an email or a username was available in the profile, we don't
   // have a way of identifying the user in the future. Throw an error and let
   // whoever's next in the line take care of it.
+
+
   if (!user.username && !user.email) {
     return next(new Error('Neither a username nor email was available'));
   }
@@ -119,10 +120,8 @@ passport.connect = function (req, query, profile, next) {
                 req.flash('error', 'Error.Passport.User.Exists');
               }
             }
-
             return next(err);
           }
-
           query.user = user.id;
 
           Passport.create(query, function (err, passport) {
@@ -135,10 +134,12 @@ passport.connect = function (req, query, profile, next) {
           });
         });
       }
+
       // Scenario: An existing user is trying to log in using an already
       //           connected passport.
       // Action:   Get the user associated with the passport.
       else {
+
         // If the tokens have changed since the last session, update them
         if (query.hasOwnProperty('tokens') && query.tokens !== passport.tokens) {
           passport.tokens = query.tokens;
