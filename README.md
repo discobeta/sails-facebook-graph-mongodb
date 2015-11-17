@@ -1,9 +1,9 @@
 # sails-facebook-graph-mongodb
-
-a [Sails](http://sailsjs.org) application
-
-a How to install
-
-npm install
-sails lift
+<br>
+[Sails](http://sailsjs.org) application
+<hr>
+How to install
+<hr>
+npm install<br>
+sails lift<br>
 
